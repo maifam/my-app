@@ -24,29 +24,50 @@ ${Container}
 `;
 
 export const NavLogo = styled(Link)`
-color: #fff;
-justify-self: flex-start;
-cursor: pointer;
-text-decoration: none;
-font-size: 2rem;
-display: flex;
-align-items: center;
+    color: #fff;
+    justify-self: flex-start;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
 `;
 
 export const NavIcon = styled(FaMagneto)`
-margin-right: 0.5rem;
+    margin-right: 0.5rem;
 `;
 
 export const MobileIcon = styled.div`
-display: none;
+    display: none;
 
-@media screen and (max-width:960px) {
-    display:block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-};
-`
+    @media screen and (max-width:960px) {
+        display:block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+`;
+
+export const NavMenu = styled.ul`
+    display: flex;
+    align-items: center;
+    list-style: none; 
+    text-align: center;
+
+    @media screen and (max-width: 960px) {
+        display: flex;
+        flex-direction:column;
+        width: 100%;
+        height: 99vh;
+        position: absolute;
+        top: 80px;
+        left: ${({click}) => (click ? 0 : '-100%')};
+        opacity: 1;
+        transition: all 0.5s ease;
+        background: #101522;
+    }
+`;
+
