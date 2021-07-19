@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon } from './Navbar.elements'
 import {FaBars, FaTimes} from 'react-icons/fa';
+import { IconContext} from 'react-icons/lib'
 
 const Navbar = () => {
 
@@ -10,17 +11,26 @@ const Navbar = () => {
 
     return (
         <>
-            <Nav>
-                <NavbarContainer>
-                    <NavLogo to='/'>
-                        <NavIcon/>
-                         ULTRA
-                    </NavLogo>
-                    <MobileIcon onClick={handleClick}>
-                        {click ? <FaTimes/> : <FaBars/>}
-                    </MobileIcon>
-                </NavbarContainer>
-            </Nav> 
+            <IconContext.Provider value={{color: '#fff'}}>
+                <Nav>
+                    <NavbarContainer>
+                        <NavLogo to='/'>
+                            <NavIcon/>
+                            ULTRA
+                        </NavLogo>
+                        <MobileIcon onClick={handleClick}>
+                            {click ? <FaTimes/> : <FaBars/>}
+                        </MobileIcon>
+                        <NavMenu onClick={handleClick}>
+                            <NavItem>
+                                <NavLinks to='/'>
+                                    Home
+                                </NavLinks>
+                            </NavItem>
+                        </NavMenu>
+                    </NavbarContainer>
+                </Nav> 
+            </IconContext.Provider>
         </>
     )
 }
