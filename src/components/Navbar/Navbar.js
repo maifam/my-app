@@ -2,13 +2,29 @@ import React, {useState} from 'react'
 import { Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon } from './Navbar.elements'
 import {FaBars, FaTimes} from 'react-icons/fa';
 import { IconContext} from 'react-icons/lib';
-import { Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon, NavMenu, NavItem, NavLinks} from './Navbar.elements';
+import { Button} from '../../globalStyles';
+import { Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon, NavMenu, NavItem, NavLinks, NavItemBtn, NavBtnLink} from './Navbar.elements';
 
 const Navbar = () => {
 
     const [click, setClick] = useState(false)
+    const [button, setButton] = useState(true)
 
     const handleClick = () => setClick(!click)
+
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false)
+        }else{
+            setButton(true)
+        }
+    };
+
+    useEffect (() => {
+        showButton()
+    }, []);
+
+    window.addEventListener('resize', showButton);
 
     return (
         <>
@@ -41,6 +57,16 @@ const Navbar = () => {
                                     PRODUCTS
                                 </NavLinks>
                             </NavItem>
+                            <NavItemBtn>
+                                {button ? (
+                                    <NavBtnLink to='/sign-up'>
+                                        <Button primary>Sign Up</Button>
+                                    </NavBtnLink>
+                                ) : ( 
+                                    <NavBtnLink to='/sign-up'>
+                                        <Button onClick={closeMobileMenu} fontBig primary>SIGN UP</Button>
+                                    </NavBtnLink>) }
+                            </NavItemBtn>
                         </NavMenu>
 
                     </NavbarContainer>
